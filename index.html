@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="扇贝红宝书词汇：同义替换、熟词僻义、易混淆、高频词根，带在线发音" />
+    <meta name="theme-color" content="#0e6e57" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="扇贝词汇" />
+
+    <link rel="icon" href="data:," />
+    <title>扇贝词汇·三组分类与高频词根</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://dict.youdao.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#f5f3ec;
+        --surface:#fffefa;
+        --surface2:#efeee4;
+        --ink:#21281f;
+        --muted:#5f6a5c;
+        --faint:#8b9484;
+        --accent:#0e6e57;
+        --accent-ink:#0a5543;
+        --accent-soft:#e0efe7;
+        --amber:#a35c07;
+        --amber-soft:#f7ecd7;
+        --rose:#a03a2e;
+        --rose-soft:#f6e3de;
+        --line:#e0dccd;
+        --shadow:0 1px 2px rgba(33,40,31,.05),0 8px 24px -18px rgba(33,40,31,.35);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#131713;
+          --surface:#1c211c;
+          --surface2:#232923;
+          --ink:#e9ede4;
+          --muted:#a3ae9e;
+          --faint:#79836f;
+          --accent:#43bd9c;
+          --accent-ink:#7fd8bd;
+          --accent-soft:#1e332a;
+          --amber:#e2a34a;
+          --amber-soft:#3a2f1a;
+          --rose:#e08a7a;
+          --rose-soft:#3a241e;
+          --line:#2d332c;
+          --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -18px rgba(0,0,0,.6);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;background:var(--bg);color:var(--ink);
+        font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+        font-size:16px;line-height:1.6;
+        -webkit-font-smoothing:antialiased;
+      }
+      .en{font-family:"Newsreader",Georgia,"Times New Roman",serif}
+      .wrap{max-width:1060px;margin:0 auto;padding:0 20px 72px}
+
+      /* ---------- header ---------- */
+      header{padding:44px 0 8px}
+      .kicker{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--accent);margin:0 0 10px}
+      h1{font-size:clamp(28px,5.4vw,42px);line-height:1.2;margin:0 0 12px;font-weight:900;letter-spacing:.01em}
+      .lede{color:var(--muted);max-width:640px;margin:0;font-size:16px}
+      .lede b{color:var(--ink)}
+      .stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+      .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;box-shadow:var(--shadow)}
+      .stat .num{font-family:"Newsreader",serif;font-size:24px;font-weight:700;color:var(--accent-ink);line-height:1}
+      .stat .lab{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+      /* ---------- toolbar ---------- */
+      .toolbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line);margin-top:26px}
+      .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+      .tabs::-webkit-scrollbar{display:none}
+      .tab{
+        flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--muted);
+        font:inherit;font-size:14.5px;font-weight:700;padding:8px 16px;border-radius:999px;cursor:pointer;
+        transition:all .15s ease;
+      }
+      .tab .cnt{font-family:"Newsreader",serif;font-weight:600;font-size:13px;opacity:.75;margin-left:5px}
+      .tab:hover{border-color:var(--accent);color:var(--accent-ink)}
+      .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+      @media (prefers-color-scheme: dark){.tab.active{color:#0d1512}}
+      .tools{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+      .search{
+        flex:1 1 220px;display:flex;align-items:center;gap:8px;background:var(--surface);
+        border:1px solid var(--line);border-radius:10px;padding:0 14px;
+      }
+      .search svg{flex:0 0 auto;color:var(--faint)}
+      .search input{flex:1;border:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);padding:10px 0;outline:none;min-width:0}
+      .search input::placeholder{color:var(--faint)}
+      .toggle{
+        display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);
+        color:var(--muted);font:inherit;font-size:14.5px;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer;
+      }
+      .toggle .dot{width:9px;height:9px;border-radius:50%;background:var(--faint);transition:background .15s}
+      .toggle.on{border-color:var(--amber);color:var(--amber)}
+      .toggle.on .dot{background:var(--amber)}
+
+      /* ---------- sections ---------- */
+      section{display:none;padding-top:28px}
+      section.active{display:block}
+      .sec-head{margin-bottom:18px}
+      .sec-head h2{font-size:24px;margin:0 0 6px;font-weight:900}
+      .sec-head p{margin:0;color:var(--muted);font-size:15px;max-width:680px}
+      .noresult{display:none;text-align:center;color:var(--faint);padding:44px 0;font-size:15px}
+      .noresult.show{display:block}
+
+      /* synonym clusters */
+      .clusters{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+      .cluster{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 8px;box-shadow:var(--shadow)}
+      .cluster h3{margin:0 0 12px;font-size:16.5px;font-weight:900;display:flex;align-items:baseline;gap:8px}
+      .cluster h3 .tag{font-size:11.5px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:5px;padding:2px 7px;letter-spacing:.05em}
+      .cluster .cnote{font-size:12.5px;color:var(--amber);background:var(--amber-soft);border-radius:7px;padding:5px 10px;margin:-4px 0 8px}
+      .wrow{display:flex;align-items:baseline;gap:10px;padding:8px 0;border-top:1px dashed var(--line)}
+      .wrow:first-of-type{border-top:0}
+      .word{font-family:"Newsreader",serif;font-size:19px;font-weight:600;line-height:1.25;white-space:nowrap}
+      .pos{flex:0 0 auto;font-family:"Newsreader",serif;font-style:italic;font-size:12.5px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);border-radius:5px;padding:1px 7px;line-height:1.5;white-space:nowrap}
+      .pos.sm{font-size:11.5px;padding:0 5px;margin-right:5px}
+      .pos-legend{margin:10px 2px 0;font-size:12.5px;color:var(--faint)}
+      .pos-legend b{font-family:"Newsreader",serif;font-style:italic;color:var(--accent-ink)}
+      .phon{font-family:"Newsreader",serif;font-style:italic;font-size:14px;color:var(--faint);white-space:nowrap}
+      .gloss{margin-left:auto;text-align:right;font-size:14px;color:var(--muted);padding-left:8px}
+
+      /* speak button */
+      .speak-btn{
+        flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+        width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+        background:var(--surface);color:var(--accent);cursor:pointer;padding:0;
+        transition:background .15s,color .15s,border-color .15s;vertical-align:middle;
+      }
+      .speak-btn svg{width:15px;height:15px;display:block}
+      .speak-btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+      .speak-btn:active{transform:scale(.92)}
+      .speak-btn.speaking{background:var(--accent);border-color:var(--accent);color:#fff}
+      @media (prefers-color-scheme: dark){.speak-btn.speaking{color:#0d1512}}
+      .speak-btn.sm{width:24px;height:24px;margin-left:5px}
+      .speak-btn.sm svg{width:12px;height:12px}
+
+      /* polysemy rows */
+      .poly-list{display:flex;flex-direction:column;gap:10px}
+      .poly{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow);
+        display:grid;grid-template-columns:230px 1fr;gap:6px 22px;align-items:baseline}
+      .poly .pword{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+      .poly .pword .word{font-size:21px}
+      .meanings{display:flex;flex-direction:column;gap:4px}
+      .mline{display:flex;gap:10px;align-items:baseline;font-size:15px}
+      .mline .badge{flex:0 0 auto;font-size:11.5px;font-weight:700;border-radius:5px;padding:1px 7px;letter-spacing:.04em;margin-top:2px}
+      .badge.old{background:var(--surface2);color:var(--muted)}
+      .badge.new{background:var(--rose-soft);color:var(--rose)}
+      .mline.exam{font-weight:700}
+      .mline.exam .txt{color:var(--ink)}
+      .mline .txt{color:var(--muted)}
+      .mline.exam .txt{color:var(--ink)}
+
+      /* confusables */
+      .conf-list{display:flex;flex-direction:column;gap:10px}
+      .conf{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+      .conf .vsrow{display:flex;flex-wrap:wrap;gap:8px 0;align-items:stretch}
+      .citem{flex:1 1 180px;padding:2px 14px 2px 0}
+      .citem + .citem{border-left:1px dashed var(--line);padding-left:16px}
+      .citem .word{font-size:19px}
+      .citem .phon{display:block;margin:1px 0 3px}
+      .citem .cg{font-size:14.5px;color:var(--muted)}
+      .citem .cg b{color:var(--ink)}
+      .vs{align-self:center;flex:0 0 auto;font-family:"Newsreader",serif;font-style:italic;font-weight:700;color:var(--rose);font-size:15px;padding:0 2px}
+      .conf .note{margin-top:10px;font-size:13.5px;color:var(--amber);background:var(--amber-soft);border-radius:8px;padding:7px 12px}
+
+      /* roots */
+      .root-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+      .root{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+      .root .rhead{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+      .root .rname{font-family:"Newsreader",serif;font-size:23px;font-weight:700;color:var(--accent-ink)}
+      .root .rcore{font-weight:900;font-size:16px}
+      .root .rcount{margin-left:auto;font-family:"Newsreader",serif;font-size:13px;color:var(--faint);white-space:nowrap}
+      .root .rcount b{font-size:19px;color:var(--amber)}
+      .fam{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+      .fam span{background:var(--surface2);border-radius:7px;padding:4px 9px;font-size:13.5px;color:var(--muted)}
+      .fam span b{font-family:"Newsreader",serif;font-weight:600;color:var(--ink);font-size:14.5px;margin-right:4px}
+      .method{margin-top:34px}
+      .method h3{font-size:20px;font-weight:900;margin:0 0 14px}
+      .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+      .step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+      .step .n{font-family:"Newsreader",serif;font-size:26px;font-weight:700;color:var(--accent);line-height:1}
+      .step h4{margin:8px 0 6px;font-size:16px;font-weight:900}
+      .step p{margin:0;font-size:14.5px;color:var(--muted)}
+      .step p b{color:var(--ink)}
+      .step .ex{margin-top:8px;font-size:13.5px;background:var(--accent-soft);color:var(--accent-ink);border-radius:8px;padding:7px 10px}
+      .warns{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px}
+      .warn{border:1px solid var(--line);border-left:4px solid var(--amber);background:var(--surface);border-radius:10px;padding:14px 18px;box-shadow:var(--shadow)}
+      .warn h4{margin:0 0 5px;font-size:15.5px;font-weight:900;color:var(--amber)}
+      .warn p{margin:0;font-size:14.5px;color:var(--muted)}
+      .warn p b{color:var(--ink)}
+
+      footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:13.5px}
+
+      /* test mode: hide meanings */
+      body.testing .hideme{color:transparent !important;text-shadow:0 0 9px rgba(120,120,120,.55);cursor:pointer;user-select:none}
+      body.testing .hideme *{color:transparent !important}
+      body.testing .revealed .hideme, body.testing .hideme.revealed{color:inherit !important;text-shadow:none}
+      body.testing .revealed .hideme *, body.testing .hideme.revealed *{color:inherit !important}
+      .tap-hint{display:none;font-size:13px;color:var(--amber);margin-top:10px}
+      body.testing .tap-hint{display:block}
+
+      @media (max-width:640px){
+        .wrap{padding:0 14px 56px}
+        header{padding-top:30px}
+        .poly{grid-template-columns:1fr;gap:8px}
+        .citem + .citem{border-left:0;padding-left:0;border-top:1px dashed var(--line);padding-top:10px;margin-top:6px}
+        .citem{flex:1 1 100%;padding-right:0}
+        .vs{display:none}
+        .word{white-space:normal}
+        .gloss{font-size:13.5px}
+        .wrow{flex-wrap:wrap;row-gap:2px}
+        .gloss{flex:1 1 100%;text-align:left;padding-left:0}
+        .tabs{flex-wrap:wrap;overflow-x:visible}
+      }
+      @media (prefers-reduced-motion: reduce){
+        html{scroll-behavior:auto}
+        *{transition:none !important}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="kicker">考研英语二 · 扇贝导入词汇加工</p>
+        <h1>三组分类与高频词根</h1>
+        <div class="stats">
+          <div class="stat"><div class="num" id="statSyn">–</div><div class="lab">同义替换词 · 15 组</div></div>
+          <div class="stat"><div class="num" id="statPoly">–</div><div class="lab">熟词僻义词</div></div>
+          <div class="stat"><div class="num" id="statConf">–</div><div class="lab">易混淆词组</div></div>
+          <div class="stat"><div class="num" id="statRoot">–</div><div class="lab">高频词根</div></div>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <nav class="tabs" id="tabs" aria-label="分组切换">
+          <button class="tab active" data-sec="syn">同义替换<span class="cnt">15 组</span></button>
+          <button class="tab" data-sec="poly">熟词僻义<span class="cnt">42 词</span></button>
+          <button class="tab" data-sec="conf">易混淆<span class="cnt">20 组</span></button>
+          <button class="tab" data-sec="root">高频词根<span class="cnt">15 个</span></button>
+        </nav>
+        <div class="tools">
+          <label class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>
+            <input id="q" type="search" placeholder="搜单词或中文意思，如 legal / 法律 / 减少…" autocomplete="off" />
+          </label>
+          <button class="toggle" id="testToggle" aria-pressed="false"><span class="dot"></span>自测模式（遮住释义）</button>
+        </div>
+        <p class="pos-legend">词性标注：<b>n.</b> 名词 · <b>v.</b> 动词 · <b>adj.</b> 形容词 · <b>adv.</b> 副词 · <b>prep.</b> 介词 · <b>conj.</b> 连词 · <b>pron.</b> 代词（斜杠表示兼类，如 n./v. 既可作名词也可作动词）</p>
+        <p class="pos-legend">读音：点单词旁的小喇叭即可朗读（美式发音，在线词典音频，需联网播放）。</p>
+        <p class="tap-hint">自测中：点任意一条即可单独看答案，再点收起。</p>
+      </div>
+
+      <section id="sec-syn" class="active">
+        <div class="sec-head">
+          <h2>一、同义替换组</h2>
+          <p>阅读题的正确答案几乎从不重复原文用词，而是换一个同义词。把意思相近的词放在一起记，读到原文词、脑子里要能自动弹出整组。其中少数几组（如「法律与裁决」）是同一主题的词族，记的是主题词汇网，不能逐个互换。</p>
+        </div>
+        <div class="clusters" id="synList"></div>
+        <p class="noresult" data-nr>没有匹配的词，换个关键词试试。</p>
+      </section>
+
+      <section id="sec-poly">
+        <div class="sec-head">
+          <h2>二、熟词僻义组</h2>
+          <p>这些词你都「认识」，但考研考的是右边标红的那个意思。阅读里按熟义去套，整句就读反了——先看熟义，再重点盯僻义。</p>
+        </div>
+        <div class="poly-list" id="polyList"></div>
+        <p class="noresult" data-nr>没有匹配的词，换个关键词试试。</p>
+      </section>
+
+      <section id="sec-conf">
+        <div class="sec-head">
+          <h2>三、易混淆组</h2>
+          <p>长得像、读音近，意思却完全不同。完型和阅读最爱在这种地方挖坑——成组对比着记，差别点就是考点。</p>
+        </div>
+        <div class="conf-list" id="confList"></div>
+        <p class="noresult" data-nr>没有匹配的词，换个关键词试试。</p>
+      </section>
+
+      <section id="sec-root">
+        <div class="sec-head">
+          <h2>四、高频词根</h2>
+          <p>统计自本批约 260 个词：下面这些词根反复出现，认熟一个，就能连带猜出一整族生词。数字是它在本批词里出现的次数。</p>
+        </div>
+        <div class="root-grid" id="rootList"></div>
+        <p class="noresult" data-nr>没有匹配的词根，换个关键词试试。</p>
+
+        <div class="method">
+          <h3>词根运用方法 · 四步</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="n">1</div>
+              <h4>拆词公式</h4>
+              <p><b>前缀定方向 + 词根定核心 + 后缀定词性</b>，三段拼起来就是词义。</p>
+              <p class="ex">jurisdiction = jur（法律）+ dict（说）+ -ion（名词）→「法律上说了算的权力」→ 管辖权</p>
+            </div>
+            <div class="step">
+              <div class="n">2</div>
+              <h4>已知带未知</h4>
+              <p>认识一个家族词，就用它<b>锚定整族</b>。认识 finite（有限），define、definite、finance 都能猜个八九不离十。</p>
+              <p class="ex">finance 的「界限」义引申为「结算、钱财」——引申方向对了就行</p>
+            </div>
+            <div class="step">
+              <div class="n">3</div>
+              <h4>后缀速判词性</h4>
+              <p><b>-tion / -ity / -ness</b> 是名词，<b>-fy</b> 是动词，<b>-ous / -ive / -al / -ic</b> 是形容词，<b>-ly</b> 多为副词。阅读里先判词性再猜义，准确率翻倍。</p>
+            </div>
+            <div class="step">
+              <div class="n">4</div>
+              <h4>只猜大方向，回句验证</h4>
+              <p>词根猜义和语义题三级判定法配合：<b>猜出方向后代回原句读一遍</b>，通顺才算数，不通就换引申义。</p>
+            </div>
+          </div>
+          <div class="warns">
+            <div class="warn">
+              <h4>警告一 · 同形异根</h4>
+              <p>radical 的 <b>radic-</b> 是「根」（根本的），radiant / radiate 的 <b>radi-</b> 是「光线」（辐射）。长得像不等于一家人，别混。</p>
+            </div>
+            <div class="warn">
+              <h4>警告二 · 引申链会拐弯</h4>
+              <p>capital 从「头」→「首要的」→ 首都 / 资本 / 大写字母。猜义时接受「<b>核心义 + 语境引申</b>」，不要死认一个意思。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>数据来源：2026-10-24 从扇贝单词本与生词本导入的约 260 个词加工整理 · 分组标准对齐考研英语二题型</footer>
+    </div>
+
+    <script>
+    /* ================= 数据 ================= */
+    var SYN = [
+      {t:"支持 / 维护", w:[["uphold","/ʌpˈhəʊld/","支持，维护（法律、原则）"],["endorse","/ɪnˈdɔːs/","支持，背书"],["safeguard","/ˈseɪfɡɑːd/","保护，保卫"],["defend","/dɪˈfend/","保卫，辩护"],["favor","/ˈfeɪvə(r)/","赞成，偏爱"]]},
+      {t:"威胁 / 恐吓", w:[["threat","/θret/","威胁（名词）"],["threaten","/ˈθretn/","威胁，恐吓"],["intimidate","/ɪnˈtɪmɪdeɪt/","恐吓，威胁（使人害怕）"]]},
+      {t:"减少 / 下降", w:[["decrease","/dɪˈkriːs/","减少"],["decline","/dɪˈklaɪn/","下降，衰退；谢绝"]]},
+      {t:"消除 / 废除", w:[["abolish","/əˈbɒlɪʃ/","废除（制度、法律）"],["eliminate","/ɪˈlɪmɪneɪt/","消除，淘汰"]]},
+      {t:"证明 / 证实", w:[["prove","/pruːv/","证明"],["certify","/ˈsɜːtɪfaɪ/","证明，发证"],["justify","/ˈdʒʌstɪfaɪ/","证明…正当，为…辩护"]]},
+      {t:"推导 / 引出", note:"形近词 deduct（扣除钱、分数）不在本组——它与 deduce 的辨析见「易混淆」组。", w:[["deduce","/dɪˈdjuːs/","推论，演绎"],["elicit","/ɪˈlɪsɪt/","引出，探出（信息、反应）"]]},
+      {t:"阻碍 / 禁止", w:[["bar","/bɑː(r)/","阻挡，禁止"],["ban","/bæn/","禁止，查禁"],["handicap","/ˈhændikæp/","障碍，不利因素"]]},
+      {t:"吸收 / 体现", w:[["absorb","/əbˈzɔːb/","吸收（知识、液体、冲击）"],["embody","/ɪmˈbɒdi/","体现，包含"],["embed","/ɪmˈbed/","嵌入，埋入"]]},
+      {t:"谨慎 / 认真", w:[["careful","/ˈkeəfl/","小心的"],["cautious","/ˈkɔːʃəs/","谨慎的"],["thoughtful","/ˈθɔːtfl/","深思熟虑的"],["conscientious","/ˌkɒnʃiˈenʃəs/","认真的，尽责的"]]},
+      {t:"善意 / 温和", w:[["benevolent","/bɪˈnevələnt/","仁慈的"],["benign","/bɪˈnaɪn/","温和的，良性的"],["favorable","/ˈfeɪvrəbl/","有利的，赞同的"]]},
+      {t:"谴责 / 反抗", w:[["deplore","/dɪˈplɔː(r)/","公开谴责，强烈反对"],["defy","/dɪˈfaɪ/","公然反抗，藐视"],["object","/əbˈdʒekt/","反对"]]},
+      {t:"法律与裁决", note:"主题词族：同属法律主题，记词汇网，不能逐个互换。", w:[["judge","/dʒʌdʒ/","法官；判断"],["jury","/ˈdʒʊəri/","陪审团"],["judicial","/dʒuˈdɪʃl/","司法的，法庭的"],["jurisdiction","/ˌdʒʊərɪsˈdɪkʃn/","管辖权，司法权"],["justice","/ˈdʒʌstɪs/","公正，司法"],["lawsuit","/ˈlɔːsuːt/","诉讼"]]},
+      {t:"认为 / 相信", w:[["deem","/diːm/","认为，视为"],["believe","/bɪˈliːv/","相信，认为"]]},
+      {t:"特征 / 特性", w:[["character","/ˈkærəktə(r)/","性格，特征"],["characteristic","/ˌkærəktəˈrɪstɪk/","特征，特性"]]},
+      {t:"其他高频动作", note:"高频动作词合集：各自独立记忆，非同义替换。", w:[["obtain","/əbˈteɪn/","获得"],["deliver","/dɪˈlɪvə(r)/","递送；发表（演讲）"],["cease","/siːs/","停止"],["blend","/blend/","混合，融合"],["disseminate","/dɪˈsemɪneɪt/","传播，散播"],["venture","/ˈventʃə(r)/","冒险，投机"]]}
+    ];
+
+    var POLY = [
+      ["qualify","/ˈkwɒlɪfaɪ/","有资格","算作；使合格；限定"],
+      ["scale","/skeɪl/","刻度；鳞","规模；体重秤上的数字"],
+      ["object","/ˈɒbdʒɪkt/","物体","动词 /əbˈdʒekt/：反对"],
+      ["radical","/ˈrædɪkl/","激进的","根本的，彻底的"],
+      ["saving","/ˈseɪvɪŋ/","拯救","储蓄；节约的钱"],
+      ["panel","/ˈpænl/","面板","专家小组，评审团"],
+      ["capital","/ˈkæpɪtl/","首都","资本；大写字母；死刑的"],
+      ["cause","/kɔːz/","原因","事业，使命"],
+      ["favor","/ˈfeɪvə(r)/","恩惠","赞同，偏爱"],
+      ["figure","/ˈfɪɡə(r)/","数字；人物","身材；弄清楚（figure out）"],
+      ["degree","/dɪˈɡriː/","学位","程度；度数"],
+      ["character","/ˈkærəktə(r)/","性格","汉字，符号；角色"],
+      ["sound","/saʊnd/","声音","健全的，可靠的（形容词）"],
+      ["bolt","/bəʊlt/","螺栓","闪电；突然逃跑"],
+      ["gulf","/ɡʌlf/","海湾","鸿沟，巨大分歧"],
+      ["spark","/spɑːk/","火花","微量，一点点"],
+      ["tire","/ˈtaɪə(r)/","疲劳","轮胎（名词）"],
+      ["pop","/pɒp/","砰的一声","流行的（pop music）"],
+      ["flock","/flɒk/","兽群，鸟群","一大群（人）"],
+      ["tug","/tʌɡ/","猛拉","一股强烈的感情"],
+      ["case","/keɪs/","箱子","情况；病例；案例"],
+      ["bar","/bɑː(r)/","酒吧","条，杆；律师业"],
+      ["cast","/kɑːst/","投掷","演员阵容；铸造"],
+      ["major","/ˈmeɪdʒə(r)/","主要的","（大学）专业；少校"],
+      ["deliver","/dɪˈlɪvə(r)/","递送","发表演讲；接生"],
+      ["embrace","/ɪmˈbreɪs/","拥抱","欣然接受（新思想）；包括"],
+      ["incline","/ɪnˈklaɪn/","倾斜","倾向于（be inclined to）"],
+      ["upset","/ʌpˈset/","打翻","心烦意乱的"],
+      ["withdraw","/wɪðˈdrɔː/","撤回","取款；退出（比赛、组织）"],
+      ["benefit","/ˈbenɪfɪt/","好处","福利金，救济金"],
+      ["fashion","/ˈfæʃn/","时尚","方式（in a … fashion）"],
+      ["ceremony","/ˈserəməni/","仪式","客套，繁文缛节"],
+      ["casual","/ˈkæʒuəl/","随便的","偶然的；临时的"],
+      ["elaborate","/ɪˈlæbərət/","精心制作的","动词 /ɪˈlæbəreɪt/：详细阐述"],
+      ["medium","/ˈmiːdiəm/","中等的","媒介（复数 media = 媒体）"],
+      ["interim","/ˈɪntərɪm/","临时的","过渡期，间歇"],
+      ["endorse","/ɪnˈdɔːs/","签名","代言宣传；背书"],
+      ["admission","/ədˈmɪʃn/","准许进入","承认，供认；入场费"],
+      ["tribute","/ˈtrɪbjuːt/","致敬","贡品，贡金"],
+      ["necessity","/nəˈsesəti/","必要性","必需品"],
+      ["economical","/ˌiːkəˈnɒmɪkl/","经济的","节俭的，实惠的"],
+      ["thorough","/ˈθʌrə/","（不算熟义）","彻底的，完完全全的"]
+    ];
+
+    var CONF = [
+      {w:[["economic","/ˌiːkəˈnɒmɪk/","经济（学）上的"],["economical","/ˌiːkəˈnɒmɪkl/","节俭的"]], note:"考研最爱挖坑：谈经济形势用 economic，夸人会过日子用 economical。"},
+      {w:[["thorough","/ˈθʌrə/","彻底的"],["though","/ðəʊ/","尽管"],["through","/θruː/","穿过"]], note:"三胞胎：长得像、读音各不同，认词先看词尾。"},
+      {w:[["casual","/ˈkæʒuəl/","偶然的，随便的"],["causal","/ˈkɔːzl/","因果的"],["casualty","/ˈkæʒuəlti/","伤亡人员"]]},
+      {w:[["scene","/siːn/","场景、现场（可数）"],["scenery","/ˈsiːnəri/","风景总称（不可数）"]], note:"一个 scene 是具体一幕；scenery 是风景的统称，不能加 s。"},
+      {w:[["access","/ˈækses/","通道、访问权"],["accessory","/əkˈsesəri/","配件、附属品"]]},
+      {w:[["quality","/ˈkwɒləti/","质量，品质"],["qualitative","/ˈkwɑːlɪteɪtɪv/","定性的"]], note:"qualitative 定性 ↔ quantitative 定量，是一对常考的反义搭配。"},
+      {w:[["qualify","/ˈkwɒlɪfaɪ/","使合格（动词）"],["qualification","/ˌkwɒlɪfɪˈkeɪʃn/","资格（名词）"]]},
+      {w:[["observe","/əbˈzɜːv/","观察，注意到"],["obvious","/ˈɒbviəs/","明显的"]]},
+      {w:[["object","/ˈɒbdʒɪkt/","物体"],["objective","/əbˈdʒektɪv/","目标；客观的"]]},
+      {w:[["identify","/aɪˈdentɪfaɪ/","识别"],["identity","/aɪˈdentəti/","身份"],["identical","/aɪˈdentɪkl/","完全相同的"]]},
+      {w:[["definite","/ˈdefɪnət/","明确的"],["finite","/ˈfaɪnaɪt/","有限的"],["define","/dɪˈfaɪn/","下定义"]], note:"同属 fin- 词根家族：「界限」分出明确、有限、界定三义。"},
+      {w:[["incident","/ˈɪnsɪdənt/","事件"],["incidence","/ˈɪnsɪdəns/","发生率"]], note:"只差词尾：-ent 是事，-ence 是率。"},
+      {w:[["lateral","/ˈlætərəl/","侧面的"],["latter","/ˈlætə(r)/","后者的"]], note:"latter 与 former（前者）成对出现，是阅读指代题的高频点。"},
+      {w:[["certain","/ˈsɜːtn/","确定的"],["certify","/ˈsɜːtɪfaɪ/","发证证明"],["certificate","/səˈtɪfɪkət/","证书"]]},
+      {w:[["capable","/ˈkeɪpəbl/","有能力的"],["capacity","/kəˈpæsəti/","容量、能力"],["captive","/ˈkæptɪv/","俘虏"],["capture","/ˈkæptʃə(r)/","捕获"]], note:"同出 cap-「抓」：抓得住→有能力，抓得下→容量，被抓住→俘虏。"},
+      {w:[["delicate","/ˈdelɪkət/","精致易碎的"],["dedicate","/ˈdedɪkeɪt/","奉献"],["deduce","/dɪˈdjuːs/","推论"],["deduct","/dɪˈdʌkt/","扣除"]], note:"de- 开头的四兄弟：deduce 是推出结论，deduct 是扣掉钱分，别写反。"},
+      {w:[["absent","/ˈæbsənt/","缺席的（形容词）"],["absence","/ˈæbsəns/","缺席（名词）"]]},
+      {w:[["mediate","/ˈmiːdieɪt/","调解，斡旋"],["meditation","/ˌmedɪˈteɪʃn/","冥想，沉思"]], note:"mediate 站在中间调停；meditation 是往内沉思，场景完全不同。"},
+      {w:[["savage","/ˈsævɪdʒ/","野蛮的"],["saving","/ˈseɪvɪŋ/","储蓄"]]},
+      {w:[["judicial","/dʒuˈdɪʃl/","司法的"],["judicious","/dʒuˈdɪʃəs/","明智的"]], note:"只差两个字母：judicial 说法庭，judicious 说人明智。"}
+    ];
+
+    var ROOTS = [
+      {r:"fin-", core:"结束、界限", n:6, fam:[["finite","有限的"],["define","界定"],["definite","明确的"],["definition","定义"],["finance","金融"],["financial","财政的"]]},
+      {r:"jur- / jud-", core:"法律、判断", n:6, fam:[["jury","陪审团"],["judicial","司法的"],["jurisdiction","管辖权"],["justice","公正"],["justify","证明正当"],["judge","法官"]]},
+      {r:"cap- / capt- / cept-", core:"抓、拿", n:6, fam:[["capable","有能力的"],["capacity","容量"],["captive","俘虏"],["capture","捕获"],["capital","资本（源于「头」）"],["accept","接受（拿过来）"]]},
+      {r:"ident-", core:"同一", n:4, fam:[["identify","识别"],["identity","身份"],["identical","相同的"],["identification","身份证明"]]},
+      {r:"qual-", core:"性质、品质", n:4, fam:[["qualify","使合格"],["qualification","资格"],["quality","质量"],["qualitative","定性的"]]},
+      {r:"cert-", core:"确定", n:4, fam:[["certain","确定的"],["certainty","确定性"],["certify","发证"],["certificate","证书"]]},
+      {r:"medi-", core:"中间", n:4, fam:[["mediate","调解（站中间）"],["medium","媒介"],["media","媒体"],["meditation","沉思（转入内心）"]]},
+      {r:"magn-", core:"大", n:3, fam:[["magnitude","巨大"],["magnificent","壮丽的"],["magnify","放大"]]},
+      {r:"bene- / bon-", core:"好", n:3, fam:[["benevolent","仁慈的"],["benign","温和的"],["benefit","益处"]]},
+      {r:"ject-", core:"抛、投", n:2, fam:[["object","物体（抛在面前的东西）"],["objection","反对"]]},
+      {r:"clin-", core:"倾斜", n:2, fam:[["incline","倾斜"],["decline","下倾 → 衰退"]]},
+      {r:"duc- / duct-", core:"引导", n:2, fam:[["deduce","引出结论 → 推论"],["deduct","引走 → 扣除"]]},
+      {r:"mit- / miss-", core:"送", n:2, fam:[["submission","提交（送上去）"],["admission","准入（送进来）"]]},
+      {r:"cess-", core:"走", n:2, fam:[["access","走近 → 通道"],["accessory","跟着走的 → 附属品"]]},
+      {r:"grad-", core:"步", n:2, fam:[["degree","一级一级 → 程度"],["upgrade","升一级"]]}
+    ];
+
+    /* ================= 词性 ================= */
+    var POS = {
+      "uphold":"v.","endorse":"v.","safeguard":"v./n.","defend":"v.","favor":"n./v.",
+      "threat":"n.","threaten":"v.","intimidate":"v.","decrease":"v./n.","decline":"v./n.",
+      "abolish":"v.","eliminate":"v.","prove":"v.","certify":"v.","justify":"v.",
+      "deduce":"v.","elicit":"v.","bar":"n./v.","ban":"v./n.","handicap":"n./v.",
+      "absorb":"v.","embody":"v.","embed":"v.","careful":"adj.","cautious":"adj.",
+      "thoughtful":"adj.","conscientious":"adj.","benevolent":"adj.","benign":"adj.","favorable":"adj.",
+      "deplore":"v.","defy":"v.","object":"n./v.","judge":"n./v.","jury":"n.",
+      "judicial":"adj.","jurisdiction":"n.","justice":"n.","lawsuit":"n.","deem":"v.",
+      "believe":"v.","character":"n.","characteristic":"n./adj.","obtain":"v.","deliver":"v.",
+      "cease":"v.","blend":"v./n.","disseminate":"v.","venture":"v./n.",
+      "qualify":"v.","scale":"n./v.","radical":"adj./n.","saving":"n.","panel":"n.",
+      "capital":"n./adj.","cause":"n./v.","figure":"n./v.","degree":"n.","sound":"n./adj./v.",
+      "bolt":"n./v.","gulf":"n.","spark":"n./v.","tire":"v./n.","pop":"adj./v./n.",
+      "flock":"n./v.","tug":"v./n.","case":"n.","cast":"v./n.","major":"adj./n.",
+      "embrace":"v./n.","incline":"v./n.","upset":"v./adj.","withdraw":"v.","benefit":"n./v.",
+      "fashion":"n.","ceremony":"n.","casual":"adj.","elaborate":"adj./v.","medium":"adj./n.",
+      "interim":"adj./n.","admission":"n.","tribute":"n.","necessity":"n.","economical":"adj.",
+      "thorough":"adj.","economic":"adj.","though":"conj./adv.","through":"prep./adv.",
+      "causal":"adj.","casualty":"n.","scene":"n.","scenery":"n.","access":"n./v.",
+      "accessory":"n./adj.","quality":"n.","qualitative":"adj.","qualification":"n.","observe":"v.",
+      "obvious":"adj.","objective":"n./adj.","identify":"v.","identity":"n.","identical":"adj.",
+      "definite":"adj.","finite":"adj.","define":"v.","incident":"n.","incidence":"n.",
+      "lateral":"adj.","latter":"adj./pron.","certain":"adj.","certificate":"n.","capable":"adj.",
+      "capacity":"n.","captive":"n./adj.","capture":"v./n.","delicate":"adj.","dedicate":"v.",
+      "deduct":"v.","absent":"adj.","absence":"n.","mediate":"v.","meditation":"n.",
+      "savage":"adj./n.","judicious":"adj.","definition":"n.","finance":"n./v.","financial":"adj.",
+      "accept":"v.","identification":"n.","certainty":"n.","media":"n.","magnitude":"n.",
+      "magnificent":"adj.","magnify":"v.","objection":"n.","submission":"n.","upgrade":"v./n."
+    };
+    function posOf(w){return POS[w.toLowerCase()]||"";}
+    function posTag(w,sm){
+      var p=posOf(w); if(!p) return "";
+      return '<span class="pos'+(sm?' sm':'')+'">'+p+'</span>';
+    }
+
+    /* ================= 朗读（在线词典音频：有道 dictvoice，美式发音 type=2） ================= */
+    var SPEAK_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3v6h3.5L11 19z" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.2 6a9 9 0 0 1 0 12"/></svg>';
+    function speakBtn(w,sm){
+      return '<button type="button" class="speak-btn'+(sm?' sm':'')+'" data-say="'+esc(w)+'" aria-label="朗读 '+esc(w)+'" title="朗读（美式）">'+SPEAK_SVG+'</button>';
+    }
+    function dictURL(word){
+      return "https://dict.youdao.com/dictvoice?audio="+encodeURIComponent(word)+"&type=2";
+    }
+    /* 发音预加载：每个词一个已预热的 Audio 对象存进缓存，
+       页面打开后空闲时分批把全部单词的发音提前拉好，
+       点喇叭时直接播缓存好的音频，几乎零等待。 */
+    var warmAudio={};
+    var currentAudio=null;
+    var speakingBtn=null;
+    function clearSpeaking(){
+      if(speakingBtn){ speakingBtn.classList.remove("speaking"); speakingBtn=null; }
+    }
+    function warmWord(word){
+      if(!word||warmAudio[word]) return;
+      var a=new Audio();
+      a.preload="auto";
+      a.addEventListener("ended",clearSpeaking);
+      a.addEventListener("error",clearSpeaking);
+      a.src=dictURL(word);
+      try{ a.load(); }catch(e){}
+      warmAudio[word]=a;
+    }
+    function speakWord(word,btn){
+      /* 连点先停掉上一条 */
+      if(currentAudio&&!currentAudio.paused){ currentAudio.pause(); }
+      clearSpeaking();
+      warmWord(word);
+      var a=warmAudio[word];
+      currentAudio=a;
+      try{ a.currentTime=0; }catch(e){}
+      if(btn){ btn.classList.add("speaking"); speakingBtn=btn; }
+      var p=a.play();
+      if(p&&p.catch){ p.catch(function(){ clearSpeaking(); }); }
+    }
+    /* 页面渲染完后，用空闲时间分批预热全部单词的发音 */
+    function prefetchAudio(){
+      var seen={},words=[];
+      document.querySelectorAll(".speak-btn").forEach(function(b){
+        var w=b.getAttribute("data-say");
+        if(w&&!seen[w]){ seen[w]=1; words.push(w); }
+      });
+      var i=0;
+      function batch(deadline){
+        var n=0;
+        while(i<words.length&&n<10){
+          if(deadline&&deadline.timeRemaining&&deadline.timeRemaining()<4&&n>0) break;
+          warmWord(words[i]); i++; n++;
+        }
+        if(i<words.length){
+          if(window.requestIdleCallback){ requestIdleCallback(batch,{timeout:1200}); }
+          else{ setTimeout(function(){ batch(null); },120); }
+        }
+      }
+      if(window.requestIdleCallback){ requestIdleCallback(batch,{timeout:800}); }
+      else{ setTimeout(function(){ batch(null); },400); }
+    }
+    if(document.readyState==="complete"){ prefetchAudio(); }
+    else{ window.addEventListener("load",prefetchAudio); }
+    /* 部分手机浏览器在首次触摸前不预加载音频，首次触摸时再补一轮（已缓存的自动跳过） */
+    document.addEventListener("pointerdown",function(){ prefetchAudio(); },{ once:true });
+    document.addEventListener("click",function(e){
+      var b=e.target.closest(".speak-btn");
+      if(!b) return;
+      e.stopImmediatePropagation();
+      speakWord(b.getAttribute("data-say"),b);
+    });
+
+    /* ================= 渲染 ================= */
+    function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+    function hay(){return (arguments[0]||"").toLowerCase();}
+
+    var synList=document.getElementById("synList");
+    SYN.forEach(function(c){
+      var d=document.createElement("div"); d.className="cluster";
+      var h='<h3>'+esc(c.t)+'<span class="tag">'+c.w.length+' 词</span></h3>';
+      if(c.note) h+='<p class="cnote">'+esc(c.note)+'</p>';
+      c.w.forEach(function(w){
+        h+='<div class="wrow" data-search="'+esc((w[0]+" "+posOf(w[0])+" "+w[2]+" "+c.t).toLowerCase())+'">'
+          +'<span class="word">'+esc(w[0])+'</span>'
+          +posTag(w[0])
+          +'<span class="phon">'+esc(w[1])+'</span>'
+          +speakBtn(w[0])
+          +'<span class="gloss hideme">'+esc(w[2])+'</span></div>';
+      });
+      d.innerHTML=h; synList.appendChild(d);
+    });
+
+    var polyList=document.getElementById("polyList");
+    POLY.forEach(function(p){
+      var d=document.createElement("div"); d.className="poly";
+      d.setAttribute("data-search",(p[0]+" "+posOf(p[0])+" "+p[2]+" "+p[3]).toLowerCase());
+      d.innerHTML='<div class="pword"><span class="word">'+esc(p[0])+'</span>'+posTag(p[0])+'<span class="phon">'+esc(p[1])+'</span>'+speakBtn(p[0])+'</div>'
+        +'<div class="meanings hideme">'
+        +'<div class="mline"><span class="badge old">熟义</span><span class="txt">'+esc(p[2])+'</span></div>'
+        +'<div class="mline exam"><span class="badge new">僻义</span><span class="txt">'+esc(p[3])+'</span></div>'
+        +'</div>';
+      polyList.appendChild(d);
+    });
+
+    var confList=document.getElementById("confList");
+    CONF.forEach(function(c){
+      var d=document.createElement("div"); d.className="conf";
+      var all=c.w.map(function(x){return x[0]+" "+posOf(x[0])+" "+x[2];}).join(" ")+(c.note?" "+c.note:"");
+      d.setAttribute("data-search",all.toLowerCase());
+      var h='<div class="vsrow">';
+      c.w.forEach(function(x,i){
+        if(i>0) h+='<span class="vs">vs</span>';
+        h+='<div class="citem"><span class="word">'+esc(x[0])+'</span> '+posTag(x[0])+'<span class="phon">'+esc(x[1])+'</span> '+speakBtn(x[0],true)+'<div class="cg hideme">'+esc(x[2])+'</div></div>';
+      });
+      h+='</div>';
+      if(c.note) h+='<div class="note hideme">'+esc(c.note)+'</div>';
+      d.innerHTML=h; confList.appendChild(d);
+    });
+
+    var rootList=document.getElementById("rootList");
+    ROOTS.forEach(function(r){
+      var d=document.createElement("div"); d.className="root";
+      var all=r.r+" "+r.core+" "+r.fam.map(function(x){return x[0]+" "+posOf(x[0])+" "+x[1];}).join(" ");
+      d.setAttribute("data-search",all.toLowerCase());
+      var h='<div class="rhead"><span class="rname">'+esc(r.r)+'</span><span class="rcore">'+esc(r.core)+'</span>'
+        +'<span class="rcount">本批出现 <b>'+r.n+'</b> 次</span></div><div class="fam">';
+      r.fam.forEach(function(x){ h+='<span><b>'+esc(x[0])+'</b>'+posTag(x[0],true)+esc(x[1])+speakBtn(x[0],true)+'</span>'; });
+      h+='</div>'; d.innerHTML=h; rootList.appendChild(d);
+    });
+
+    var synCount=SYN.reduce(function(a,c){return a+c.w.length;},0);
+    document.getElementById("statSyn").textContent=synCount;
+    document.getElementById("statPoly").textContent=POLY.length;
+    document.getElementById("statConf").textContent=CONF.length;
+    document.getElementById("statRoot").textContent=ROOTS.length;
+
+    /* ================= 交互 ================= */
+    var tabs=document.querySelectorAll(".tab");
+    tabs.forEach(function(tab){
+      tab.addEventListener("click",function(){
+        tabs.forEach(function(t){t.classList.remove("active");});
+        tab.classList.add("active");
+        document.querySelectorAll("section").forEach(function(s){s.classList.remove("active");});
+        document.getElementById("sec-"+tab.getAttribute("data-sec")).classList.add("active");
+        applyFilter();
+      });
+    });
+
+    var q=document.getElementById("q");
+    q.addEventListener("input",applyFilter);
+    function applyFilter(){
+      var v=q.value.trim().toLowerCase();
+      var active=document.querySelector("section.active");
+      if(!active) return;
+      var anyVisible=false;
+      /* cluster cards: filter word rows, hide empty clusters */
+      active.querySelectorAll(".cluster").forEach(function(card){
+        var vis=0;
+        card.querySelectorAll(".wrow").forEach(function(row){
+          var ok=!v||row.getAttribute("data-search").indexOf(v)>-1;
+          row.style.display=ok?"":"none"; if(ok)vis++;
+        });
+        card.style.display=vis?"":"none"; if(vis)anyVisible=true;
+      });
+      /* single-item cards */
+      active.querySelectorAll(".poly,.conf,.root").forEach(function(card){
+        var ok=!v||(card.getAttribute("data-search")||"").indexOf(v)>-1;
+        card.style.display=ok?"":"none"; if(ok)anyVisible=true;
+      });
+      var nr=active.querySelector("[data-nr]");
+      if(nr) nr.classList.toggle("show",!anyVisible);
+    }
+
+    var toggle=document.getElementById("testToggle");
+    toggle.addEventListener("click",function(){
+      var on=document.body.classList.toggle("testing");
+      toggle.classList.toggle("on",on);
+      toggle.setAttribute("aria-pressed",on?"true":"false");
+      document.querySelectorAll(".revealed").forEach(function(el){el.classList.remove("revealed");});
+    });
+    /* tap a card to peek at its hidden meaning */
+    document.addEventListener("click",function(e){
+      if(!document.body.classList.contains("testing")) return;
+      var card=e.target.closest(".wrow,.poly,.conf");
+      if(card) card.classList.toggle("revealed");
+    });
+    </script>
+    <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

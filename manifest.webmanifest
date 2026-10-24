@@ -1,0 +1,29 @@
+{
+  "name": "扇贝词汇·三组分类与高频词根",
+  "short_name": "扇贝词汇",
+  "description": "扇贝红宝书词汇：同义替换、熟词僻义、易混淆、高频词根，带在线发音",
+  "lang": "zh-CN",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#f5f3ec",
+  "theme_color": "#0e6e57",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
