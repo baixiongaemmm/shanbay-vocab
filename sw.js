@@ -1,4 +1,4 @@
-// 扇贝词汇 PWA service worker
+// 英语词汇 PWA service worker
 const VERSION = "v1";
 const CORE = "shanbay-vocab-core-" + VERSION;
 const RUNTIME = "shanbay-vocab-runtime-" + VERSION;
